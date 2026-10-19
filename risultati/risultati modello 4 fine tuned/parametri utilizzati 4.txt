@@ -1,0 +1,40 @@
+    snr_range=(-8, 5) ---- 
+
+PitchShift(min_semitones=-0.8, max_semitones=0.8, p=0.5),
+TimeStretch(min_rate=0.92, max_rate=1.08, leave_length_unchanged=False, p=0.5),
+Gain(min_gain_db=-3.0, max_gain_db=3.0, p=0.5) ----------
+
+Learning rate  3e-5 scheduler cosine
+
+alpha 0.05 e beta 0.3, ovvero aumento il peso sulla loss si-snr, voglio dare peso maggiore alla parte temporale della loss.
+
+    # =========================================================================
+    # CONGELAMENTO PARZIALE (TEST A: Encoder e ERB bloccati, DPGRNN + Decoder liberi)
+    # =========================================================================
+    
+    # 1. Congeliamo tutto il modello di base
+    for param in base_model.parameters():
+        param.requires_grad = False
+
+    # 2. Sblocchiamo SOLO i blocchi DPGRNN e il Decoder
+    for param in base_model.dpgrnn1.parameters():
+        param.requires_grad = True
+    for param in base_model.dpgrnn2.parameters():
+        param.requires_grad = True
+    for param in base_model.decoder.parameters():
+        param.requires_grad = True
+
+    # (Opzionale ma utilissimo) Stampiamo il conteggio per verificare che i layer giusti siano sbloccati
+    trainable_params = sum(p.numel() for p in pipeline.parameters() if p.requires_grad)
+    total_params = sum(p.numel() for p in pipeline.parameters())
+    print(f"\n[CONFIGURAZIONE PARAMETRI]:")
+    print(f" -> Parametri Totali: {total_params:,}")
+    print(f" -> Parametri Addestrabili (DPGRNN + Decoder): {trainable_params:,}")
+    print(f" -> Parametri Congelati (Encoder + ERB): {total_params - trainable_params:,}\n")
+
+    # 3. L'Optimizer deve filtrare e considerare SOLO i parametri con requires_grad=True
+    optimizer = torch.optim.AdamW(
+        filter(lambda p: p.requires_grad, pipeline.parameters()), 
+        lr=learning_rate, 
+        weight_decay=1e-4
+    )

@@ -1,0 +1,31 @@
+======================================================================
+[Train Clean] Controllo e taglio dei file superiori a 3 secondi in corso...
+[Train Clean]
+ - Cartella: c:\Users\mario\Desktop\progetto_DACLS\gtcrn_main\dataset\train\clean
+ - Numero totale file: 714
+ - Durata complessiva: 0.58 ore (0h 34.6m)
+ - File residui con durata > 3.0s: 0
+----------------------------------------------------------------------
+[Train Noise] Controllo e taglio dei file superiori a 3 secondi in corso...
+[Train Noise]
+ - Cartella: c:\Users\mario\Desktop\progetto_DACLS\gtcrn_main\dataset\train\noise
+ - Numero totale file: 1196
+ - Durata complessiva: 1.00 ore (0h 59.8m)
+ - File residui con durata > 3.0s: 0
+----------------------------------------------------------------------
+[Val Clean] Controllo e taglio dei file superiori a 3 secondi in corso...
+[Val Clean]
+ - Cartella: c:\Users\mario\Desktop\progetto_DACLS\gtcrn_main\dataset\val\clean
+ - Numero totale file: 246
+ - Durata complessiva: 0.20 ore (0h 11.8m)
+ - File residui con durata > 3.0s: 0
+----------------------------------------------------------------------
+[Val Noise] Controllo e taglio dei file superiori a 3 secondi in corso...
+[Val Noise]
+ - Cartella: c:\Users\mario\Desktop\progetto_DACLS\gtcrn_main\dataset\val\noise
+ - Numero totale file: 299
+ - Durata complessiva: 0.25 ore (0h 14.9m)
+ - File residui con durata > 3.0s: 0
+----------------------------------------------------------------------
+Durata complessiva dell'intero dataset (Clean + Noise): 2.02 ore
+======================================================================

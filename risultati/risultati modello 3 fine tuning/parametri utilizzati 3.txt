@@ -1,0 +1,9 @@
+snr_range=(-10, 3) ---- 
+
+CASO SENZA LA DATA AUG
+
+Eliminata data augmentation
+
+Learning rate  3e-5 scheduler cosine
+
+alpha 0.05 e beta 0.3, ovvero come fine tuning 2 aumento il peso sulla loss si-snr, voglio dare peso maggiore alla parte temporale della loss, . obiettivo=cercare di pulire la voce, aumentare le metriche in generale. I valori di alpha e beta sono stati ottenuti dopo varie sperimentazioni alla ricerca dell'ottimo.

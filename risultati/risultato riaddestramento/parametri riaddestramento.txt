@@ -1,0 +1,9 @@
+snr_range=(-8, 5) ---- 
+
+PitchShift(min_semitones=-0.8, max_semitones=0.8, p=0.5),
+TimeStretch(min_rate=0.92, max_rate=1.08, leave_length_unchanged=False, p=0.5),
+Gain(min_gain_db=-3.0, max_gain_db=3.0, p=0.5) ----------
+
+alpha=0.05, beta=0.2 --------
+
+Learning rate  1e-3, scheduler CosineAnnealingLR
